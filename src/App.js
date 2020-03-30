@@ -6,84 +6,94 @@ import Experience from "./components/pages/experience";
 
 import "./App.css";
 
-import { makeStyles, Container, Divider, Fab } from "@material-ui/core";
+import { makeStyles, Divider, Fab, Grid, Zoom } from "@material-ui/core";
 import UpIcon from "@material-ui/icons/KeyboardArrowUp";
-import { green } from "@material-ui/core/colors";
+import { AppThemeProvider } from "./theme";
 
 // =============================================================================
-// FontAwesomeIcons
+// FontAwesomeIcons library
 // =============================================================================
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-library.add(fab);
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserCircle,
+  faBook,
+  faPhone,
+  faInbox
+} from "@fortawesome/free-solid-svg-icons";
+library.add(fab, fas, faUserCircle, faBook, faPhone, faInbox);
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
     body: {
+      margin: "50px 0 0 0",
       overflow: "hidden",
-      background: "#eff3f6",
-      color: "black",
-      height: "100vh",
-      margin: '0%'
+      width: "100%"
     }
-  },
-  dark: {
-    background: "#242433",
-    color: "white"
   },
   fab: {
     position: "fixed",
     bottom: theme.spacing(2),
     right: theme.spacing(2)
   },
-  fabIcon: {
-    color: theme.palette.common.white,
-    backgroundColor: green[500],
-    "&:hover": {
-      backgroundColor: green[600]
-    }
-  },
-  test: {
+  app: {
     height: "100vh",
-    overflow: "auto"
+    overflow: "auto",
+    paddingTop: "48px !important",
+    backgroundColor: theme.palette.background.default
   }
 }));
 
 function App(props) {
-  const styles = useStyles();
-  const [state, setState] = useState(false);
-  const [scrollButton, setScrollbutton] = useState({
-    display: "block",
-    isvisible: false
+  const [state, setState] = useState({
+    change: false,
+    dark: "light",
+    light: "dark"
   });
-  const body = document.querySelector("body");
-  const classes =
-    state === false
-      ? body.classList.remove(`${styles.dark}`)
-      : body.classList.add(`${styles.dark}`);
   const toggle = () => {
-    if (state === false) {
-      setState(true);
+    if (state.change === false) {
+      setState({
+        change: true,
+        light: "dark"
+      });
     } else {
-      setState(false);
+      setState({
+        change: false,
+        dark: "light"
+      });
     }
   };
-
-  function onScroll(params) {
-    console.log(params.target.scrollTop);
-  }
-
+  const mode = state.change === false ? state.dark : state.light;
   return (
-    <div className={styles.test} onScroll={onScroll}>
-      <NavBar dark={classes} toggle={toggle} />
-      <About />
+    <AppThemeProvider mode={mode}>
+      <AppContainer toggle={toggle} />
+    </AppThemeProvider>
+  );
+}
+
+function AppContainer(props) {
+  const { toggle } = props;
+  const styles = useStyles();
+  return (
+    <div className={styles.app}>
+      <NavBar toggle={toggle} />
+      <Grid container>
+        <About />
+      </Grid>
       <Divider />
-      <Education />
+      <Grid container>
+        <Education />
+      </Grid>
       <Divider />
-      <Experience />
-      <Fab className={styles.fab}>
-        <UpIcon />
-      </Fab>
+      <Grid container>
+        <Experience />
+      </Grid>
+      <Zoom>
+        <Fab color='primary'>
+          <UpIcon />
+        </Fab>
+      </Zoom>
     </div>
   );
 }
