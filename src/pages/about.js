@@ -1,5 +1,5 @@
 import React from "react";
-import brandIcons from "../brandIcons";
+import brandIcons from "../components/brandIcons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
@@ -10,7 +10,8 @@ import {
   ListItemText,
   Grid,
   Avatar,
-  Typography
+  Typography,
+  Paper
 } from "@material-ui/core";
 
 import {
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   about: {
-    marginTop: "100px"
+    paddingTop: "50px",
   },
   mail: {
     borderBottom: `2px solid orange`,
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   intro: {
     display: "flex",
     flexDirection: "column",
-    paddingTop: "10px"
+    paddingTop: "10px",
   },
   intro_tag: {
     padding: "5px",
@@ -75,18 +76,19 @@ const useStyles = makeStyles((theme) => ({
   intro_name: {
     fontSize: "1.5rem",
     textAlign: "center",
-    color: theme.palette.text.primary
+    color: theme.palette.text.primary,
   },
   intro_label: {
     fontSize: "1.0rem",
-    textAlign: "center",
-    fontStyle: "italic"
+    fontStyle: "italic",
+    color: theme.palette.text.primary,
   },
   large_avatar: {
     width: theme.spacing(20),
     height: theme.spacing(20),
     left: "100px",
-    marginTop: "20px",
+    top: "50px",
+    marginTop: "70px",
     [theme.breakpoints.up("lg")]: {
       marginTop: "20px",
       width: theme.spacing(30),
@@ -95,16 +97,17 @@ const useStyles = makeStyles((theme) => ({
   },
   detail_list: {
     paddingRight: "30px",
-    paddingLeft: "30px"
+    // paddingLeft: "30px",
   },
   avatar: {
     order: 1
   },
   about_me: {
-    order: 3
+    order: 3,
   },
   details: {
-    order: 2
+    order: 2,
+    marginTop: "40px"
   }
 }));
 
@@ -118,35 +121,42 @@ export default function About() {
   return (
     <React.Fragment>
       <Grid item xs={12} sm={6} className={styles.about_me}>
-        <div className={styles.intro_tagline}>
+        <Paper component="details" className={styles.intro_tagline} elevation={0}>
           <List>
             <ListItem style={{paddingLeft: "0"}}>
               <ListItemIcon style={{ minWidth: "25px" }}>
                 <FontAwesomeIcon icon='user-circle' size='lg' />
               </ListItemIcon>
-              <Typography variant='h1'>About Me</Typography>
+              <Typography variant='h1'align="center">About Me</Typography>
             </ListItem>
           </List>
-          {/* <Typography variant='h1' className={styles.caption}>
-            Passionate Software Developer
-          </Typography> */}
           <Typography variant='body2' className={styles.intro_tag}>
             {text}
           </Typography>
-        </div>
+          <List>
+            <ListItem style={{paddingLeft: "0"}}>
+              <ListItemIcon style={{ minWidth: "25px" }}>
+                <FontAwesomeIcon icon='user-circle' size='lg' />
+              </ListItemIcon>
+              <Typography variant='h1'align="center">Interest</Typography>
+            </ListItem>
+          </List>
+          <Typography variant='body2' className={styles.intro_tag}>
+            {text}
+          </Typography>
+        </Paper>
       </Grid>
       <Grid item xs className={styles.details}>
         <div className={styles.intro}>
           <Typography variant='subtitle1' className={styles.intro_name}>
-            Paulsimon Edache
+            Paulsimon Ogwuche Edache
           </Typography>
-          <Typography variant='subtitle2' className={styles.intro_label}>
+          <Typography variant='subtitle2' align="center" className={styles.intro_label}>
             Software Developer
           </Typography>
           <List className={styles.detail_list}>
             <ListItem>
               <ListItemIcon>
-                {/* <MailOutline /> */}
                 <FontAwesomeIcon icon="inbox"/>
               </ListItemIcon>
               <a className={styles.mail} href='mailto:speak2donsimon@gmail.com'>
@@ -155,7 +165,6 @@ export default function About() {
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                {/* <PhoneOutlined /> */}
                 <FontAwesomeIcon icon="phone"/>
               </ListItemIcon>
               <ListItemText secondary='+234805412415' />
@@ -168,7 +177,7 @@ export default function About() {
                 <ListItemText secondary='Abuja, Nigeria' />
               </a>
             </ListItem>
-            <ListItem style={{ paddingLeft: "20px", paddingTop: "20px" }}>
+            <ListItem style={{ paddingLeft: "50px", paddingTop: "20px" }}>
               {brandIcons.map((icon, id) => (
                 <ListItemIcon key={id}>{icon}</ListItemIcon>
               ))}

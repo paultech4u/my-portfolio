@@ -55,7 +55,7 @@ function tabProps(index) {
 }
 
 function Navbar(props) {
-  const { toggle } = props;
+  const { toggle, theme } = props;
   const styles = useStyles();
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
@@ -90,7 +90,7 @@ function Navbar(props) {
         </Tabs>
       </div>
       <div className={styles.switch_wrapper}>
-        <ModeSwitch toggle={toggle}/>
+        <ModeSwitch theme={theme} toggleTheme={toggle}/>
       </div>
     </AppBar>
   );

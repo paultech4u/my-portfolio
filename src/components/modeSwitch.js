@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
@@ -25,7 +25,7 @@ const IOSSwitch = withStyles((theme) => ({
     "&$focusVisible $thumb": {
       color: "#52d869",
       padding: 3
-    },
+    }
   },
   thumb: {
     width: 24,
@@ -34,7 +34,7 @@ const IOSSwitch = withStyles((theme) => ({
   track: {
     borderRadius: 26 / 2,
     // backgroundColor: theme.palette.grey[200],
-     backgroundColor: "#303030",
+    backgroundColor: "#303030",
     opacity: 1,
     transition: theme.transitions.create(["background-color", "border"])
   },
@@ -43,8 +43,6 @@ const IOSSwitch = withStyles((theme) => ({
 }))(({ classes, ...props }) => {
   return (
     <Switch
-      // checkedIcon={<FontAwesomeIcon className={classes.moon} size="sm" icon={["fas", "moon"]} />}
-      // icon={<FontAwesomeIcon  size="sm" icon={["fas", "sun"]} />}
       focusVisibleClassName={classes.focusVisible}
       classes={{
         root: classes.root,
@@ -58,16 +56,23 @@ const IOSSwitch = withStyles((theme) => ({
   );
 });
 
-const ModeSwitch = (props) => {
-  const { toggle } = props;
-  const [state, setState] = useState({
-    chackedA: false
-  });
-
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
+const ModeSwitch = ({ toggleTheme, theme }) => {
+  const [state, setState] = useState(theme === "light");
+  const handleChange = () => {
+    if (state === false) {
+      // localStorage.setItem("state", true);
+      setState(true);
+    } else {
+      // localStorage.setItem("state", false);
+      setState(false);
+    }
   };
 
+  // useEffect(() => {
+  //   const checked = localStorage.getItem("state");
+  //   checked && setState(checked);
+  //   return  checked
+  // }, []);
 
   return (
     <React.Fragment>
@@ -75,41 +80,12 @@ const ModeSwitch = (props) => {
         style={{ marginRight: "0" }}
         control={
           <IOSSwitch
-            checked={state.chackedA}
-            onClick={toggle}
+            checked={!state}
+            onClick={toggleTheme}
             onChange={handleChange}
-            name='chackedA'
           />
         }
       />
-
-      {/* <div>
-        <span>
-          <WbSunnyOutlined
-            fontSize='small'
-            style={{ color: state.change ? "white" : "black" }}
-          />
-        </span>
-      </div>
-      <div onClick={toggle}>
-        <div onClick={handleToggleSwitch}>
-          <span style={{ marginLeft: "5px" }}>
-            {state ? (
-              <ToggleOn fontSize='small' style={{ color: "lightgreen" }} />
-            ) : (
-              <ToggleOff fontSize='small' style={{ color: "white" }} />
-            )}
-          </span>
-        </div>
-      </div>
-      <div>
-        <span>
-          <Brightness2Outlined
-            fontSize='small'
-            style={{ color: state.change ? "white" : "black" }}
-          />
-        </span>
-      </div> */}
     </React.Fragment>
   );
 };
