@@ -1,5 +1,5 @@
 import React from "react";
-import MediaCard from "../components/card";
+import MediaCard from "../components/dataCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Grid,
@@ -49,8 +49,9 @@ const SchoolCard = () => {
         elevation={4}
         component='div'
         className={styles.root}
-        classname={styles.media}
+        classes={styles.media}
         text="visit"
+        src="./"
         >
         <Typography variant='h2'>BAYERO UNIVERSITY KANO, NIGERIA</Typography>
         <Typography variant='caption' className={styles.sch_name}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
@@ -16,8 +16,9 @@ const IOSSwitch = withStyles((theme) => ({
     "&$checked": {
       transform: "translateX(23px)",
       color: theme.palette.common.white,
+      backgroundColor: "green",
       "& + $track": {
-        backgroundColor: "#303030",
+        backgroundColor: theme.palette.background.default,
         opacity: 1,
         border: "none"
       }
@@ -29,7 +30,7 @@ const IOSSwitch = withStyles((theme) => ({
   },
   thumb: {
     width: 24,
-    height: 24
+    height: 24,
   },
   track: {
     borderRadius: 26 / 2,
@@ -42,37 +43,21 @@ const IOSSwitch = withStyles((theme) => ({
   focusVisible: {}
 }))(({ classes, ...props }) => {
   return (
-    <Switch
-      focusVisibleClassName={classes.focusVisible}
-      classes={{
-        root: classes.root,
-        switchBase: classes.switchBase,
-        thumb: classes.thumb,
-        track: classes.track,
-        checked: classes.checked
-      }}
-      {...props}
-    />
+      <Switch
+        focusVisibleClassName={classes.focusVisible}
+        classes={{
+          root: classes.root,
+          switchBase: classes.switchBase,
+          thumb: classes.thumb,
+          track: classes.track,
+          checked: classes.checked
+        }}
+        {...props}
+      />
   );
 });
 
 const ModeSwitch = ({ toggleTheme, theme }) => {
-  const [state, setState] = useState(theme === "light");
-  const handleChange = () => {
-    if (state === false) {
-      // localStorage.setItem("state", true);
-      setState(true);
-    } else {
-      // localStorage.setItem("state", false);
-      setState(false);
-    }
-  };
-
-  // useEffect(() => {
-  //   const checked = localStorage.getItem("state");
-  //   checked && setState(checked);
-  //   return  checked
-  // }, []);
 
   return (
     <React.Fragment>
@@ -80,9 +65,8 @@ const ModeSwitch = ({ toggleTheme, theme }) => {
         style={{ marginRight: "0" }}
         control={
           <IOSSwitch
-            checked={!state}
+            checked={theme === 'light' ? false : true}
             onClick={toggleTheme}
-            onChange={handleChange}
           />
         }
       />

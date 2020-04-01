@@ -19,12 +19,13 @@ import {
 library.add(fab, fas, faUserCircle, faBook, faPhone, faInbox);
 
 function App(props) {
+  // using the useDarkMode hook to set up our theme
+  // to localstorage to aid user preferences
   const [theme, toggleTheme] = useDarkMode();
-  var mode = theme === 'light' ? 'light' : 'dark';
 
   return (
-    <AppThemeProvider mode={mode}>
-      <AppContainer theme={mode} toggle={toggleTheme} />
+    <AppThemeProvider mode={theme}>
+      <AppContainer theme={theme} toggle={toggleTheme} />
     </AppThemeProvider>
   );
 }

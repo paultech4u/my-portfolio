@@ -54,7 +54,7 @@ function tabProps(index) {
   };
 }
 
-function Navbar(props) {
+function Appbar(props) {
   const { toggle, theme } = props;
   const styles = useStyles();
   const [value, setValue] = useState(0);
@@ -96,4 +96,4 @@ function Navbar(props) {
   );
 }
 
-export default Navbar;
+export default Appbar;

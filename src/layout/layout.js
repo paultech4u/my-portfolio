@@ -1,85 +1,101 @@
-import React, {useState, useEffect} from "react"
+import React from "react";
 
 import About from "../pages/about";
 import Education from "../pages/education";
 import Experience from "../pages/experience";
 
-import NavBar from "../components/navbar";
+import Appbar from "../components/appbar";
 import Rate from "../components/rating";
+import { useRating } from "../components/useRating";
 
-import { makeStyles, Divider, Fab, Grid, Zoom } from "@material-ui/core";
-import UpIcon from "@material-ui/icons/KeyboardArrowUp";
-import Backdrop from '@material-ui/core/Backdrop';
+import {
+  makeStyles,
+  Divider,
+  // Fab,
+  Grid,
+  // Zoom,
+  Paper,
+  Typography,
+  Snackbar,
+  Backdrop 
+} from "@material-ui/core";
+// import UpIcon from "@material-ui/icons/KeyboardArrowUp";
+import MuiAlert from '@material-ui/lab/Alert';
 
 
 const useStyles = makeStyles((theme) => ({
-    "@global": {
-      body: {
-        margin: "0",
-        overflow: "hidden",
-        width: "100%",
-      }
-    },
-    fab: {
-      position: "fixed",
-      bottom: theme.spacing(2),
-      right: theme.spacing(2)
-    },
-    layout: {
-      height: "100vh",
-      overflowY: "auto",
-      overflowX: "hidden",
+  "@global": {
+    body: {
+      margin: "0",
+      height: "100%",
+      overflow: "hidden",
+      width: "100%"
+    }
+  },
+  fab: {
+    position: "fixed",
+    bottom: theme.spacing(2),
+    right: theme.spacing(2)
+  },
+  layout: {
+    height: "100vh",
+    overflow: "auto",
+    // overflowX: "hidden",
     //   paddingTop: "48px",
-      backgroundColor: theme.palette.background.default
-    },
-    backdrop: {
-      zIndex: theme.zIndex.drawer + 1,
-      color: '#fff',
-    },
-  }));
-  
+    backgroundColor: theme.palette.background.default
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: "#fff"
+  }
+}));
+
+function Alert(props){
+  return <MuiAlert elevation={6} variant="filled" {...props}/>
+}
 
 function AppContainer(props) {
-    const { toggle, theme } = props;
-    const styles = useStyles();
-    const [ open, setOpen ] = useState(false)
-   
-    useEffect(() => {
-     const timeout = setTimeout(() => {
-        setOpen(o => !o);
-      }, 10000)
-      return () => {
-        clearTimeout(timeout)
-      }
+  const { toggle, theme } = props;
+  const [open, handleRating] = useRating();
+  const styles = useStyles();
 
-    }, [])
-    return (
-      <div className={styles.layout}>
-        <NavBar theme={theme} toggle={toggle} />
-        <Grid container>
-          <About />
-        </Grid>
-        <Divider />
-        <Grid container>
-          <Education />
-        </Grid>
-        <Divider />
-        <Grid container>
-          <Experience />
-        </Grid>
-        <Backdrop className={styles.backdrop} open={open}>
-            <Rate rate={() => setTimeout(() => {
-               setOpen(!open)
-            }, 2000)}/>
-        </Backdrop>
-        <Zoom>
-          <Fab color='primary'>
-            <UpIcon />
-          </Fab>
-        </Zoom>
-      </div>
-    );
+
+  function scroll(params) {
+    console.log(params.target.scrollTop)
   }
+ 
+  return (
+    <>
+    <Appbar theme={theme} toggle={toggle} />
+    <div className={styles.layout}  onScroll={scroll}>
+      <Grid container>
+        <About />
+      </Grid>
+      <Divider />
+      <Grid container>
+        <Education />
+      </Grid>
+      <Divider />
+      <Grid container>
+        <Experience />
+      </Grid>
+      <Backdrop className={styles.backdrop} open={open}>
+        <Paper elevation={3}>
+          <Typography variant='h1'>Rate Me</Typography>
+          <Rate rate={handleRating} />
+        </Paper>
+        <Snackbar open={open} autoHideDuration={6000}>
+          <Alert>Thanks for Rating!</Alert>
+        </Snackbar>
+      </Backdrop>
+      {/* <Zoom>
+        <Fab color='primary'>
+          <UpIcon />
+        </Fab>
+      </Zoom> */}
+    </div>
+    </>
+  );
+}
 
-
-  export default AppContainer;
+export default AppContainer;

@@ -2,8 +2,7 @@ import React, { memo } from "react";
 import PropTypes from 'prop-types';
 import { createMuiTheme, ThemeProvider, colors } from "@material-ui/core";
 
-export const AppThemeProvider = memo((props) => {
-  const { children, mode  } = props;
+export const AppThemeProvider = memo(({children, mode}) => {
   const theme = createMuiTheme({
       palette: {
         type: mode,
@@ -31,7 +30,7 @@ export const AppThemeProvider = memo((props) => {
         
       }
   });
-  return <ThemeProvider theme={theme} mode={mode}>{children}</ThemeProvider>;
+  return <ThemeProvider theme={theme} >{children}</ThemeProvider>;
 });
 
 

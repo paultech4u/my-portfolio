@@ -1,5 +1,5 @@
 import React from "react";
-import MediaCard from "../components/card";
+import MediaCard from "../components/dataCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   makeStyles,
@@ -67,9 +67,11 @@ function ExperienceCard() {
     <Grid item xs={12} sm={6} style={{ paddingLeft: "5px" }}>
       <MediaCard
         className={styles.experience}
-        classname={styles.media}
+        classes={styles.media}
         text='Preview'
-        size='small'>
+        size='small'
+        src="./"
+        >
         <Typography variant='h1'>FlexiSaf Edusoft Limited</Typography>
         <Typography variant='caption'>Web Developer Intren</Typography>
         <Typography variant='body1'>

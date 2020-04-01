@@ -9,11 +9,11 @@ import {
   CardActions
 } from "@material-ui/core";
 
-function MediaCard({ children, image, src, classname, text, size, ...others }) {
+function MediaCard({ children, image, src, classes, text, size, ...others }) {
   return (
     <Card {...others}>
       <CardActionArea>
-        <CardMedia image={image} src={src} className={classname} />
+        <CardMedia image={image} src={src} className={classes} />
         <CardContent>{children}</CardContent>
       </CardActionArea>
       <CardActions>

@@ -46,7 +46,7 @@ function Rate({rate}) {
   return (
     <Rating
       name='customized-icons'
-      defaultValue={2}
+      // defaultValue={}
       getLabelText={(value) => customIcons[value].label}
       IconContainerComponent={IconContainer}
       size="large"
