@@ -11,7 +11,7 @@ import {
 
 function MediaCard({ children, image, src, classes, text, size, ...others }) {
   return (
-    <Card {...others}>
+    <Card {...others} elevation={10}>
       <CardActionArea>
         <CardMedia image={image} src={src} className={classes} />
         <CardContent>{children}</CardContent>
