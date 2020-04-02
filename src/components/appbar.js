@@ -3,27 +3,26 @@ import React, { useState } from "react";
 import { makeStyles, AppBar, Tab, Tabs, IconButton } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
 import ModeSwitch from "./modeSwitch";
+import TemporaryDrawer from "./drawer";
 
 const useStyles = makeStyles((theme) => ({
   Appbar: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    [theme.breakpoints.down("sm")]: {}
+    justifyContent: "space-between"
   },
   switch_wrapper: {
     display: "flex",
     alignItems: "center",
     paddingRight: "10px",
-    [theme.breakpoints.down("sm")]: {
-    }
+    [theme.breakpoints.down("sm")]: {}
   },
   menuButton: {
     visibility: "visible",
     [theme.breakpoints.up("md")]: {
-      visibility: "hidden"
+      display: "none"
     },
     [theme.breakpoints.up("lg")]: {
-      visibility: "hidden"
+      display: "none"
     }
   },
   tabs: {
@@ -31,7 +30,10 @@ const useStyles = makeStyles((theme) => ({
       display: "none"
     },
     [theme.breakpoints.down("md")]: {
-       visibility: "visible"
+      visibility: "visible"
+    },
+    [theme.breakpoints.up("md")]: {
+      visibility: "visible"
     }
   }
 }));
@@ -58,23 +60,38 @@ function Appbar(props) {
   const { toggle, theme } = props;
   const styles = useStyles();
   const [value, setValue] = useState(0);
+  const [drawer, setDrawer] = React.useState(false);
+
+  const toggleDrawer = () => {
+    setDrawer(true);
+  };
+
+  const toggleDrawerClose = () => {
+    setDrawer(false);
+  };
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   return (
-    <AppBar position='fixed' color="primary" className={styles.Appbar}>
+    <AppBar position='relative' color='primary' className={styles.Appbar}>
       <div className={styles.menuButton}>
-        <IconButton color="secondary" >
+        <IconButton color='secondary' onClick={toggleDrawer}>
           <Menu />
         </IconButton>
       </div>
+      <TemporaryDrawer
+        open={drawer}
+        openDrawer={toggleDrawer}
+        closeDrawer={toggleDrawerClose}
+      />
       <div className={styles.tabs}>
         <Tabs
           centered
           onChange={handleChange}
           value={value}
           style={{ flexGrow: "2" }}>
-          <LinkTab label='About' href='./about' alt='about' {...tabProps(0)} />
+          <LinkTab label='Profile' href='./about' alt='about' {...tabProps(0)} />
           <LinkTab
             label='Education'
             href='./education'
@@ -90,7 +107,7 @@ function Appbar(props) {
         </Tabs>
       </div>
       <div className={styles.switch_wrapper}>
-        <ModeSwitch theme={theme} toggleTheme={toggle}/>
+        <ModeSwitch theme={theme} toggleTheme={toggle} />
       </div>
     </AppBar>
   );
