@@ -9,50 +9,70 @@ import {
   ListItem,
   ListItemIcon,
 } from "@material-ui/core";
-// import buk from "../../image/buk.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(1),
-    width: theme.spacing(42),
-    height: theme.spacing(40),
-    borderRadius: "20px"
+    width: theme.spacing(35),
+    height: theme.spacing(35),
+    borderRadius: "20px",
+    [theme.breakpoints.up("lg")]: {
+      margin: theme.spacing(1),
+      width: theme.spacing(42),
+      height: theme.spacing(40),
+      borderRadius: "20px",
+    },
   },
   header: {
     marginTop: "10px",
     marginBottom: "10px",
-    color: theme.palette.text.primary
+    paddingLeft: theme.spacing(4),
   },
-  edu_details: {
-    // display: 'flex',
-    // flexDirection: 'row',
-    // justifyContent: 'space-between',
-    padding: "30px 10px 10px 10px"
+  edu_list: {
+    display: "flex",
+    flexDirection: "row",
+    overflowX: "scroll",
+    width: "100%",
+    msOverflowStyle: "none",
+    paddingBottom: theme.spacing(10),
+    [theme.breakpoints.up("lg")]: {
+      display: "flex",
+      flexDirection: "row",
+      overflowX: "scroll",
+      width: "100%",
+      msOverflowStyle: "none",
+      paddingBottom: theme.spacing(10),
+    },
+    "&::-webkit-scrollbar": {
+      display: "none",
+    },
   },
   sch_name: {
-    paddingBottom: "20px"
+    paddingBottom: "20px",
   },
   date: {
-    color: "orange"
+    color: "orange",
   },
   media: {
-    height: 140,
-    backgroundColor: "orange"
-  }
+    height: 100,
+    backgroundColor: "orange",
+    [theme.breakpoints.up("lg")]: {
+      height: 140,
+    },
+  },
 }));
 
 const SchoolCard = () => {
   const styles = useStyles();
   return (
-    <Grid item sm={12} style={{paddingLeft: "5px"}}>
+    <Grid item sm={12}>
       <MediaCard
-        elevation={4}
+        elevation={3}
         component='div'
         className={styles.root}
         classes={styles.media}
-        text="visit"
-        src="./"
-        >
+        text='visit'
+        src='./'>
         <Typography variant='h2'>BAYERO UNIVERSITY KANO, NIGERIA</Typography>
         <Typography variant='caption' className={styles.sch_name}>
           BACHELOR OF SCIENCE
@@ -66,24 +86,30 @@ const SchoolCard = () => {
   );
 };
 
-export default function Education(props) {
+export default function Education({id}) {
   const styles = useStyles();
   return (
     <React.Fragment>
-      <List>
-        <ListItem>
-          <ListItemIcon style={{ minWidth: "25px" }}>
-            <FontAwesomeIcon icon='book' size='lg' />
-          </ListItemIcon>
-          <Typography variant='h1' className={styles.header}>
-            EDUCATION
-          </Typography>
-        </ListItem>
-      </List>
-      <SchoolCard />
-      <SchoolCard />
-      <SchoolCard />
-      <SchoolCard />
+      <Grid item xs={12} sm={6}>
+        <List>
+          <ListItem>
+            <ListItemIcon style={{ minWidth: "25px" }}>
+              <FontAwesomeIcon icon='book' size='lg' />
+            </ListItemIcon>
+            <Typography variant='h1' color='textPrimary'>
+              EDUCATION
+            </Typography>
+          </ListItem>
+        </List>
+      </Grid>
+      <div className={styles.edu_list}>
+        <SchoolCard />
+        <SchoolCard />
+        <SchoolCard />
+        <SchoolCard />
+        <SchoolCard />
+        <SchoolCard />
+      </div>
     </React.Fragment>
   );
 }

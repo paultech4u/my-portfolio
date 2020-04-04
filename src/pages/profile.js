@@ -11,12 +11,12 @@ import {
   Grid,
   Avatar,
   Typography,
-  Paper
 } from "@material-ui/core";
 
 import {
   LocationOnOutlined
 } from "@material-ui/icons";
+import paul from "../image/image.jpg"
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -24,14 +24,11 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: "none"
     }
   },
-  about: {
-    paddingTop: "50px",
-  },
   mail: {
     borderBottom: `2px solid orange`,
     "&:hover": {
-      transition: "ease-out .7s",
-      backgroundColor: "orange"
+      transition: "ease-out .2s",
+      backgroundColor: "orange",
     }
   },
   icon_link: {
@@ -42,10 +39,11 @@ const useStyles = makeStyles((theme) => ({
   intro: {
     display: "flex",
     flexDirection: "column",
-    paddingTop: "10px",
+    paddingTop: "20px",
   },
   intro_tag: {
     padding: "5px",
+    fontSize: "1.2rem",
     [theme.breakpoints.up("lg")]: {
       fontSize: "2em",
       fontWeight: "300",
@@ -86,27 +84,31 @@ const useStyles = makeStyles((theme) => ({
   large_avatar: {
     width: theme.spacing(20),
     height: theme.spacing(20),
+    position: "relative",
     left: "100px",
     top: "50px",
-    marginTop: "70px",
     [theme.breakpoints.up("lg")]: {
       marginTop: "20px",
+      left: "0",
       width: theme.spacing(30),
       height: theme.spacing(30)
     }
   },
   detail_list: {
     paddingRight: "30px",
-    // paddingLeft: "30px",
   },
   avatar: {
-    order: 1
+    order: 2,
+    [theme.breakpoints.up("lg")]: {
+      order: 3
+    }
   },
   about_me: {
-    order: 3,
+    order: 1,
+    color: theme.palette.text.primary
   },
   details: {
-    order: 2,
+    order: 3,
     marginTop: "40px"
   }
 }));
@@ -116,35 +118,21 @@ const text = `I am a software developer, who is based in
   I love contributing to open source project
   and community you can find my activities in here.`;
 
-export default function About() {
+export default function About({id}) {
   const styles = useStyles();
   return (
     <React.Fragment>
       <Grid item xs={12} sm={6} className={styles.about_me}>
-        <Paper component="details" className={styles.intro_tagline} elevation={0}>
+        <div className={styles.intro_tagline} elevation={0}>
           <List>
             <ListItem style={{paddingLeft: "0"}}>
-              <ListItemIcon style={{ minWidth: "25px" }}>
-                <FontAwesomeIcon icon='user-circle' size='lg' />
-              </ListItemIcon>
-              <Typography variant='h1'align="center">About Me</Typography>
+              <Typography variant='h1'align="center">Hello</Typography>
             </ListItem>
           </List>
           <Typography variant='body2' className={styles.intro_tag}>
             {text}
           </Typography>
-          <List>
-            <ListItem style={{paddingLeft: "0"}}>
-              <ListItemIcon style={{ minWidth: "25px" }}>
-                <FontAwesomeIcon icon='user-circle' size='lg' />
-              </ListItemIcon>
-              <Typography variant='h1'align="center">Interest</Typography>
-            </ListItem>
-          </List>
-          <Typography variant='body2' className={styles.intro_tag}>
-            {text}
-          </Typography>
-        </Paper>
+        </div>
       </Grid>
       <Grid item xs className={styles.details}>
         <div className={styles.intro}>
@@ -177,7 +165,7 @@ export default function About() {
                 <ListItemText secondary='Abuja, Nigeria' />
               </a>
             </ListItem>
-            <ListItem style={{ paddingLeft: "50px", paddingTop: "20px" }}>
+            <ListItem style={{marginTop: 16}}>
               {brandIcons.map((icon, id) => (
                 <ListItemIcon key={id}>{icon}</ListItemIcon>
               ))}
@@ -186,7 +174,7 @@ export default function About() {
         </div>
       </Grid>
       <Grid item xs className={styles.avatar}>
-        <Avatar className={styles.large_avatar} />
+        <Avatar src={paul} className={styles.large_avatar} />
       </Grid>
     </React.Fragment>
   );

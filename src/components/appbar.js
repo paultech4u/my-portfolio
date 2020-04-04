@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { makeStyles, AppBar, Tab, Tabs, IconButton } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
-import ModeSwitch from "./modeSwitch";
+import ModeSwitch from "./themeSwitch";
 import TemporaryDrawer from "./drawer";
 
 const useStyles = makeStyles((theme) => ({
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: "10px",
     [theme.breakpoints.down("sm")]: {}
   },
-  menuButton: {
+  menu_button: {
     visibility: "visible",
     [theme.breakpoints.up("md")]: {
       display: "none"
@@ -41,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
 function LinkTab(props) {
   return (
     <Tab
-      component='a'
       onClick={(event) => {
         event.preventDefault();
       }}
@@ -57,10 +56,12 @@ function tabProps(index) {
 }
 
 function Appbar(props) {
-  const { toggle, theme } = props;
-  const styles = useStyles();
   const [value, setValue] = useState(0);
   const [drawer, setDrawer] = React.useState(false);
+
+ 
+  const { toggle, theme } = props;
+  const styles = useStyles();
 
   const toggleDrawer = () => {
     setDrawer(true);
@@ -75,7 +76,7 @@ function Appbar(props) {
   };
   return (
     <AppBar position='relative' color='primary' className={styles.Appbar}>
-      <div className={styles.menuButton}>
+      <div className={styles.menu_button}>
         <IconButton color='secondary' onClick={toggleDrawer}>
           <Menu />
         </IconButton>
@@ -91,16 +92,20 @@ function Appbar(props) {
           onChange={handleChange}
           value={value}
           style={{ flexGrow: "2" }}>
-          <LinkTab label='Profile' href='./about' alt='about' {...tabProps(0)} />
+          <LinkTab 
+          label='Profile' 
+          href='profile' 
+          alt='profile'
+           {...tabProps(0)} />
           <LinkTab
             label='Education'
-            href='./education'
+            href='education'
             alt='education'
             {...tabProps(1)}
           />
           <LinkTab
             label='Experience'
-            href='./experience'
+            href='experience'
             alt='experience'
             {...tabProps(2)}
           />

@@ -2,7 +2,6 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const IOSSwitch = withStyles((theme) => ({
   root: {
@@ -16,7 +15,6 @@ const IOSSwitch = withStyles((theme) => ({
     "&$checked": {
       transform: "translateX(23px)",
       color: theme.palette.common.white,
-      backgroundColor: "green",
       "& + $track": {
         backgroundColor: theme.palette.background.default,
         opacity: 1,
@@ -34,7 +32,6 @@ const IOSSwitch = withStyles((theme) => ({
   },
   track: {
     borderRadius: 26 / 2,
-    // backgroundColor: theme.palette.grey[200],
     backgroundColor: "#303030",
     opacity: 1,
     transition: theme.transitions.create(["background-color", "border"])
@@ -65,7 +62,7 @@ const ModeSwitch = ({ toggleTheme, theme }) => {
         style={{ marginRight: "0" }}
         control={
           <IOSSwitch
-            checked={theme === 'light' ? false : true}
+            checked={theme === 'light' ? false : true} // checked when true and unchecked when false
             onClick={toggleTheme}
           />
         }

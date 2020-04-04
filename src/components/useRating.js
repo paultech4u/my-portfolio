@@ -1,28 +1,37 @@
 import { useState, useEffect } from "react";
 
 export const useRating = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState({
+     change: 0,
+     openRate: false
+  });
+
   useEffect(() => {
     const timeout = setTimeout(() => {
-      //  checking if localstorage is empty
-      //  else set the value true to localstorage open
-      if (localStorage.getItem("open")) {
-        localStorage.getItem("open");
-      } else {
+      if (localStorage.getItem("open") === null) {
         localStorage.setItem("open", "true");
-        setOpen((o) => !o);
+        setOpen((o) => ({
+           openRate: !o.openRate
+        }));
       }
+      localStorage.setItem("open", "true");
+      setOpen((o) => ({
+        openRate: o.openRate
+     }));
     }, 10000);
     return () => {
       clearTimeout(timeout);
     };
   }, []);
-  //  function that execute when the viewer click
-  //  on the rating display
-  const handleRating = () => {
+
+ 
+
+  const handleRating = (event, newValue) => {
     setTimeout(() => {
-      localStorage.setItem("open", "false");
-      setOpen((o) => !o);
+      setOpen((o) => ({
+        openRate: !o.openRate,
+        change: localStorage.setItem("Rate", newValue)
+     }));
     }, 2000);
   };
 
