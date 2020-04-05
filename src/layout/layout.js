@@ -4,13 +4,13 @@ import Profile from "../pages/profile";
 import Education from "../pages/education";
 import Experience from "../pages/experience";
 
-import Appbar from "../components/appbar";
+// import Appbar from "../components/appbar";
+import ModeSwitch from "../components/themeSwitch"
 import Rate from "../components/rating";
 import { useRating } from "../components/useRating";
 
 import {
   makeStyles,
-  Divider,
   Grid,
   Paper,
   Typography,
@@ -22,17 +22,18 @@ const useStyles = makeStyles((theme) => ({
     body: {
       margin: "0",
       height: "100%",
-      overflow: "hidden",
+      overflow: "auto",
       width: "100%"
     }
   },
-  fab: {
-    position: "fixed",
-    bottom: theme.spacing(2),
-    right: theme.spacing(2)
+  switch_wrapper: {
+    display: "flex",
+    alignItems: "flex-end",
+    paddingRight: "10px",
+    justifyContent: "flex-end"
   },
   layout: {
-    height: "100vh",
+    height: "100%",
     overflow: "auto",
     backgroundColor: theme.palette.background.default
   },
@@ -54,16 +55,17 @@ function AppContainer(props) {
 
   return (
     <React.Fragment>
-      <Appbar theme={theme} toggle={toggle} />
+      {/* <Appbar theme={theme} toggle={toggle} /> */}
       <div className={styles.layout}>
+      <div className={styles.switch_wrapper}>
+        <ModeSwitch theme={theme} toggleTheme={toggle} />
+      </div>
         <Grid container>
           <Profile id="profile"/>
         </Grid>
-        <Divider />
         <Grid container>
           <Education id="education"/>
         </Grid>
-        <Divider />
         <Grid container>
           <Experience id="experience"/>
         </Grid>

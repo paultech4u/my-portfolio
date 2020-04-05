@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   header: {
     marginTop: "10px",
     marginBottom: "10px",
-    paddingLeft: theme.spacing(4),
+    paddingLeft: theme.spacing(2),
   },
   edu_list: {
     display: "flex",
@@ -35,6 +35,8 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     msOverflowStyle: "none",
     paddingBottom: theme.spacing(10),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
     [theme.breakpoints.up("lg")]: {
       display: "flex",
       flexDirection: "row",
@@ -72,6 +74,7 @@ const SchoolCard = () => {
         className={styles.root}
         classes={styles.media}
         text='visit'
+        link="http://buk.edu.ng/"
         src='./'>
         <Typography variant='h2'>BAYERO UNIVERSITY KANO, NIGERIA</Typography>
         <Typography variant='caption' className={styles.sch_name}>
@@ -91,7 +94,7 @@ export default function Education({id}) {
   return (
     <React.Fragment>
       <Grid item xs={12} sm={6}>
-        <List>
+        <List className={styles.header}>
           <ListItem>
             <ListItemIcon style={{ minWidth: "25px" }}>
               <FontAwesomeIcon icon='book' size='lg' />

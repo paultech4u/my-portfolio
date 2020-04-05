@@ -16,7 +16,7 @@ const IOSSwitch = withStyles((theme) => ({
       transform: "translateX(23px)",
       color: theme.palette.common.white,
       "& + $track": {
-        backgroundColor: theme.palette.background.default,
+        backgroundColor: "white",
         opacity: 1,
         border: "none"
       }

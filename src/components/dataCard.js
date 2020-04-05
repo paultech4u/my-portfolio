@@ -9,7 +9,7 @@ import {
   CardActions
 } from "@material-ui/core";
 
-function MediaCard({ children, image, src, classes, text, size, ...others }) {
+function MediaCard({ children, image, src, classes, text, size,link, ...others }) {
   return (
     <Card {...others} elevation={10}>
       <CardActionArea>
@@ -17,7 +17,7 @@ function MediaCard({ children, image, src, classes, text, size, ...others }) {
         <CardContent>{children}</CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size={size}>{text}</Button>
+        <Button size={size} href={link}>{text}</Button>
       </CardActions>
     </Card>
   );

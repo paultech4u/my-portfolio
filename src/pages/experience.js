@@ -6,95 +6,104 @@ import {
   ListItem,
   List,
   ListItemIcon,
+  ListItemText,
   Grid,
   Typography,
   BottomNavigation,
   BottomNavigationAction,
-  Paper
 } from "@material-ui/core";
-import buk from "../image/flexi.jpg";
+import flexi from "../image/flexi.jpg";
 
 const useStyles = makeStyles((theme) => ({
-  experience: {
+  root: {
     margin: theme.spacing(1),
     width: theme.spacing(42),
     height: theme.spacing(62),
-    borderRadius: "20px"
+    borderRadius: "20px",
   },
   exp_list: {
     display: "flex",
     flexDirection: "row",
     overflowX: "scroll",
-    width: '100%',
-    msOverflowStyle: "none",
-    paddingBottom: theme.spacing(5),
-    "&::-webkit-scrollbar": {
-      display: "none"
-    }
-  },
-  footer: {
     width: "100%",
-    backgroundColor: theme.palette.primary.dark,
-    position: "relative",
-    bottom: 105,
+    msOverflowStyle: "none",
+    paddingBottom: theme.spacing(10),
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(3),
     [theme.breakpoints.up("lg")]: {
-      bottom: 50,
-    }
+      display: "flex",
+      flexDirection: "row",
+      overflowX: "scroll",
+      width: "100%",
+      msOverflowStyle: "none",
+      paddingBottom: theme.spacing(10),
+    },
+    "&::-webkit-scrollbar": {
+      display: "none",
+    },
+  },
+  header: {
+    marginTop: "10px",
+    marginBottom: "10px",
+    paddingLeft: theme.spacing(2),
   },
   skill_header: {
     marginTop: theme.spacing(2),
-    padding: "10px 10px 20px 0"
+    paddingLeft: theme.spacing(3),
+    color: theme.palette.text.primary,
   },
   skills: {
-    height: theme.spacing(40),
+    color: theme.palette.text.primary,
+    display: "flex",
+    height: theme.spacing(30),
+    maxWidth: theme.spacing(15),
     paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
-    color: theme.palette.text.primary
+    [theme.breakpoints.up("lg")]: {
+      maxWidth: theme.spacing(50),
+    },
   },
   workflow: {
     height: theme.spacing(40),
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
-    color: theme.palette.text.primary
+    color: theme.palette.text.primary,
   },
   media: {
-    height: 160
-  }
+    height: 160,
+  },
+  footer: {
+    width: "100%",
+    backgroundColor: theme.palette.primary.dark,
+    position: "relative",
+    bottom: 0,
+    [theme.breakpoints.up("lg")]: {
+      bottom: 0,
+    },
+  },
 }));
 
-const programming = [
-  { name: "html5", color: "red" },
-  { name: "js", color: "yellow" },
-  { name: "css3", color: "blue" },
-  { name: "react", color: "darkblue" },
-  { name: "python", color: "lightblue" }
-];
+const tools = ["Webpack", "NPM", "yarn", "Git", "Firebase"];
+const frameworks = ["React", "Material-UI", "Booststrap", "Django", "NodeJS"];
+const languages = ["JavaScript(ES6)", "HTML5/CSS", "Python"];
 
-const tools = [
-  { name: "git-alt", color: "red" },
-  { name: "github", color: "black" },
-  { name: "npm", color: "red" },
-  { name: "yarn", color: "lightblue" },
-  { name: "bootstrap", color: "blue" }
-];
+const text = `As an Intren, i worked with senior developer and teams in building
+scalable software for clients which as been deployed online, I have
+build enough confidence working on a real project and teams.`;
 
 function ExperienceCard() {
   const styles = useStyles();
   return (
-    <Grid item xs={12} sm={6} style={{ paddingLeft: "5px" }}>
+    <Grid item xs={12}>
       <MediaCard
-        className={styles.experience}
+        className={styles.root}
         classes={styles.media}
         text='Preview'
+        link='http://flexisaf.com/'
         size='small'
-        image={buk}>
+        image={flexi}>
         <Typography variant='h1'>FlexiSAF Edusoft Limited</Typography>
-        <Typography variant='caption'>Web Developer Intren</Typography>
-        <Typography variant='body1'>
-          As an Intren, i worked with senior developer and teams in building
-          scalable software for clients which as been deployed online, I have
-          build enough confidence working on a real project and teams.
-        </Typography>
+        <Typography variant='caption'>Software Developer / Intren</Typography>
+        <Typography variant='body1'>{text}</Typography>
         <Typography variant='caption' color='primary'>
           May 2020 - Present
         </Typography>
@@ -103,19 +112,17 @@ function ExperienceCard() {
   );
 }
 
-export default function Experience({id}) {
+export default function Experience({ id }) {
   const styles = useStyles();
   return (
     <React.Fragment>
       <Grid item xs={12}>
-        <List>
+        <List className={styles.header}>
           <ListItem>
             <ListItemIcon style={{ minWidth: "25px" }}>
               <FontAwesomeIcon icon='book-reader' size='lg' />
             </ListItemIcon>
-            <Typography
-              variant='h1'
-              color='textPrimary'>
+            <Typography variant='h1' color='textPrimary'>
               EXPERIENCE
             </Typography>
           </ListItem>
@@ -123,48 +130,49 @@ export default function Experience({id}) {
       </Grid>
       <div className={styles.exp_list}>
         <ExperienceCard />
-        <ExperienceCard />
-        <ExperienceCard />
       </div>
-      <Grid item xs={12} sm={6} className={styles.skills}>
+      <Grid item xs={12} sm={6}>
         <Typography variant='h1' className={styles.skill_header}>
-          Skills
+          Tools & Technologies
         </Typography>
-        <Paper style={{ marginBottom: "20px" }}>
-          <List>
-            <ListItem>
-              {programming.map(({ name, color }) => (
-                <ListItemIcon key={`${name}${color}`}>
-                  <FontAwesomeIcon
-                    size='3x'
-                    color={color}
-                    icon={{ prefix: "fab", iconName: name }}
-                  />
-                </ListItemIcon>
-              ))}
-            </ListItem>
-          </List>
-        </Paper>
-        <Paper elevation={4} style={{ marginBottom: "20px" }}>
-          <List>
-            <ListItem>
-              {tools.map(({ name, color }) => (
-                <ListItemIcon key={`${name}${color}`}>
-                  <FontAwesomeIcon
-                    size='3x'
-                    color={color}
-                    icon={{ prefix: "fab", iconName: name }}
-                  />
-                </ListItemIcon>
-              ))}
-            </ListItem>
-          </List>
-        </Paper>
+        <List className={styles.skills}>
+          <ListItem
+            style={{ flexDirection: "column", alignItems: "flex-start" }}>
+            <Typography variant='h2'>LANGUAGES</Typography>
+            {languages.map((text, id) => (
+              <ListItemText key={id} primary={text} style={{ flex: "0 0 0" }} />
+            ))}
+          </ListItem>
+          <ListItem
+            style={{ flexDirection: "column", alignItems: "flex-start" }}>
+            <Typography variant='h2'>FRAMEWORKS</Typography>
+            {frameworks.map((text, id) => (
+              <ListItemText key={id} primary={text} style={{ flex: "0 0 0" }} />
+            ))}
+          </ListItem>
+          <ListItem
+            style={{ flexDirection: "column", alignItems: "flex-start" }}>
+            <Typography variant='h2'>TOOLS</Typography>
+            {tools.map((text, id) => (
+              <ListItemText key={id} primary={text} style={{ flex: "0 0 0" }} />
+            ))}
+          </ListItem>
+        </List>
       </Grid>
       <Grid item xs={12} sm={6} className={styles.workflow}>
         <Typography variant='h1' className={styles.skill_header}>
-          Workflow
+          Award
         </Typography>
+        <List>
+          <ListItem>
+            <ListItemIcon>
+              <FontAwesomeIcon icon="trophy"/>
+            </ListItemIcon>
+            <Typography variant='subtitle1'>
+              Cisco Networking Academy certificate/Introduction to Cybersecurity
+            </Typography>
+          </ListItem>
+        </List>
       </Grid>
       <Grid item xs={12}>
         <BottomNavigation className={styles.footer}>

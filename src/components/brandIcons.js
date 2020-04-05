@@ -5,13 +5,13 @@ const brandIcons = [
   <a href='https://github.com/speak2donsimon'>
     <FontAwesomeIcon size='lg' color='black' icon={["fab", "github"]} />
   </a>,
-  <a href='./twitter'>
+  <a href='https://twitter.com/Techemptys'>
     <FontAwesomeIcon size='lg' color='lightblue' icon={["fab", "twitter"]} />
   </a>,
   <a href='./medium'>
     <FontAwesomeIcon size='lg' color='black' icon={["fab", "medium"]} />
   </a>,
-  <a href='./medium'>
+  <a href=''>
     <FontAwesomeIcon size='lg' icon={["fab", "facebook"]} />
   </a>,
   <a href='./medium'>
