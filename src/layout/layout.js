@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "flex-end",
     paddingRight: "10px",
+    paddingTop: theme.spacing(2),
     justifyContent: "flex-end"
   },
   layout: {
