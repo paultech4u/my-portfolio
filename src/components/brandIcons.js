@@ -11,7 +11,7 @@ const brandIcons = [
   <a href='./medium'>
     <FontAwesomeIcon size='lg' color='black' icon={["fab", "medium"]} />
   </a>,
-  <a href=''>
+  <a href='./facebook'>
     <FontAwesomeIcon size='lg' icon={["fab", "facebook"]} />
   </a>,
   <a href='./medium'>

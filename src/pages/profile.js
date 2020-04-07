@@ -116,7 +116,7 @@ const text = `I am a software developer, who has solid
   I love contributing to open source project
   and to make impacts.`;
 
-export default function About({ id }) {
+export default function About(props) {
   const styles = useStyles();
   return (
     <React.Fragment>

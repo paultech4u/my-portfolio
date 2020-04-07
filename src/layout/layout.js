@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     body: {
       margin: "0",
       height: "100%",
-      overflow: "auto",
+      overflow: "hidden",
       width: "100%"
     }
   },
@@ -33,8 +33,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "flex-end"
   },
   layout: {
-    height: "100%",
-    overflow: "auto",
+    height: "100vh",
+    overflowY: "auto",
+    overflowX: "hidden",
     backgroundColor: theme.palette.background.default
   },
   backdrop: {

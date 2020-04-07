@@ -90,29 +90,42 @@ const text = `As an Intren, i worked with senior developer and teams in building
 scalable software for clients which as been deployed online, I have
 build enough confidence working on a real project and teams.`;
 
+const OrderedList = ({ tools, label, color, variant, ...others }) => {
+  return (
+    <ListItem
+      style={{ flexDirection: "column", alignItems: "flex-start" }}
+      {...others}>
+      <Typography variant={variant} color={color}>
+        {label}
+      </Typography>
+      {tools.map((text, id) => (
+        <ListItemText key={id} primary={text} style={{ flex: "0 0 0" }} />
+      ))}
+    </ListItem>
+  );
+};
+
 function ExperienceCard() {
   const styles = useStyles();
   return (
-    <Grid item xs={12}>
-      <MediaCard
-        className={styles.root}
-        classes={styles.media}
-        text='Preview'
-        link='http://flexisaf.com/'
-        size='small'
-        image={flexi}>
-        <Typography variant='h1'>FlexiSAF Edusoft Limited</Typography>
-        <Typography variant='caption'>Software Developer / Intren</Typography>
-        <Typography variant='body1'>{text}</Typography>
-        <Typography variant='caption' color='primary'>
-          May 2020 - Present
-        </Typography>
-      </MediaCard>
-    </Grid>
+    <MediaCard
+      className={styles.root}
+      classes={styles.media}
+      text='Preview'
+      link='http://flexisaf.com/'
+      size='small'
+      image={flexi}>
+      <Typography variant='h1'>FlexiSAF Edusoft Limited</Typography>
+      <Typography variant='caption'>Software Developer / Intren</Typography>
+      <Typography variant='body1'>{text}</Typography>
+      <Typography variant='caption' color='primary'>
+        May 2020 - Present
+      </Typography>
+    </MediaCard>
   );
 }
 
-export default function Experience({ id }) {
+export default function Experience(props) {
   const styles = useStyles();
   return (
     <React.Fragment>
@@ -128,35 +141,19 @@ export default function Experience({ id }) {
           </ListItem>
         </List>
       </Grid>
-      <div className={styles.exp_list}>
-        <ExperienceCard />
-      </div>
+      <Grid item xs={12}>
+        <div className={styles.exp_list}>
+          <ExperienceCard />
+        </div>
+      </Grid>
       <Grid item xs={12} sm={6}>
         <Typography variant='h1' className={styles.skill_header}>
           Tools & Technologies
         </Typography>
         <List className={styles.skills}>
-          <ListItem
-            style={{ flexDirection: "column", alignItems: "flex-start" }}>
-            <Typography variant='h2'>LANGUAGES</Typography>
-            {languages.map((text, id) => (
-              <ListItemText key={id} primary={text} style={{ flex: "0 0 0" }} />
-            ))}
-          </ListItem>
-          <ListItem
-            style={{ flexDirection: "column", alignItems: "flex-start" }}>
-            <Typography variant='h2'>FRAMEWORKS</Typography>
-            {frameworks.map((text, id) => (
-              <ListItemText key={id} primary={text} style={{ flex: "0 0 0" }} />
-            ))}
-          </ListItem>
-          <ListItem
-            style={{ flexDirection: "column", alignItems: "flex-start" }}>
-            <Typography variant='h2'>TOOLS</Typography>
-            {tools.map((text, id) => (
-              <ListItemText key={id} primary={text} style={{ flex: "0 0 0" }} />
-            ))}
-          </ListItem>
+          <OrderedList tools={languages} label='LANGUAGES' variant='h2' />
+          <OrderedList tools={frameworks} label='FRAMEWORKS' variant='h2' />
+          <OrderedList tools={tools} label='TOOLS' variant='h2' />
         </List>
       </Grid>
       <Grid item xs={12} sm={6} className={styles.workflow}>
@@ -166,7 +163,7 @@ export default function Experience({ id }) {
         <List>
           <ListItem>
             <ListItemIcon>
-              <FontAwesomeIcon icon="trophy"/>
+              <FontAwesomeIcon icon='trophy' />
             </ListItemIcon>
             <Typography variant='subtitle1'>
               Cisco Networking Academy certificate/Introduction to Cybersecurity

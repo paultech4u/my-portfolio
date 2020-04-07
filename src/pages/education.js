@@ -89,7 +89,7 @@ const SchoolCard = () => {
   );
 };
 
-export default function Education({id}) {
+export default function Education(props) {
   const styles = useStyles();
   return (
     <React.Fragment>
