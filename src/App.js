@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { AppThemeProvider } from "./theme";
-import { useDarkMode } from "./components/useDarkMode";
+import { useDarkMode } from "./components/hooks/useDarkMode";
 import AppContainer from "./layout/layout";
 
 // =============================================================================

@@ -1,8 +1,7 @@
 import React from "react";
-import MediaCard from "../components/dataCard";
+import MediaCard from "../components/card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  makeStyles,
   ListItem,
   List,
   ListItemIcon,
@@ -13,84 +12,17 @@ import {
   BottomNavigationAction,
 } from "@material-ui/core";
 import flexi from "../image/flexi.jpg";
+import { useExperience } from "../styles/index";
+import { intrenText } from "../components/dummyTexts"
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    margin: theme.spacing(1),
-    width: theme.spacing(42),
-    height: theme.spacing(62),
-    borderRadius: "20px",
-  },
-  exp_list: {
-    display: "flex",
-    flexDirection: "row",
-    overflowX: "scroll",
-    width: "100%",
-    msOverflowStyle: "none",
-    paddingBottom: theme.spacing(10),
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(3),
-    [theme.breakpoints.up("lg")]: {
-      display: "flex",
-      flexDirection: "row",
-      overflowX: "scroll",
-      width: "100%",
-      msOverflowStyle: "none",
-      paddingBottom: theme.spacing(10),
-    },
-    "&::-webkit-scrollbar": {
-      display: "none",
-    },
-  },
-  header: {
-    marginTop: "10px",
-    marginBottom: "10px",
-    paddingLeft: theme.spacing(2),
-  },
-  skill_header: {
-    marginTop: theme.spacing(2),
-    paddingLeft: theme.spacing(3),
-    color: theme.palette.text.primary,
-  },
-  skills: {
-    color: theme.palette.text.primary,
-    display: "flex",
-    height: theme.spacing(30),
-    maxWidth: theme.spacing(15),
-    paddingLeft: theme.spacing(2),
-    [theme.breakpoints.up("lg")]: {
-      maxWidth: theme.spacing(50),
-    },
-  },
-  workflow: {
-    height: theme.spacing(40),
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
-    color: theme.palette.text.primary,
-  },
-  media: {
-    height: 160,
-  },
-  footer: {
-    width: "100%",
-    backgroundColor: theme.palette.primary.dark,
-    position: "relative",
-    bottom: 0,
-    [theme.breakpoints.up("lg")]: {
-      bottom: 0,
-    },
-  },
-}));
+
 
 const tools = ["Webpack", "NPM", "yarn", "Git", "Firebase"];
 const frameworks = ["React", "Material-UI", "Booststrap", "Django", "NodeJS"];
 const languages = ["JavaScript(ES6)", "HTML5/CSS", "Python"];
 
-const text = `As an Intren, i worked with senior developer and teams in building
-scalable software for clients which as been deployed online, I have
-build enough confidence working on a real project and teams.`;
 
-const OrderedList = ({ tools, label, color, variant, ...others }) => {
+const Tools = ({ tools, label, color, variant, ...others }) => {
   return (
     <ListItem
       style={{ flexDirection: "column", alignItems: "flex-start" }}
@@ -105,8 +37,8 @@ const OrderedList = ({ tools, label, color, variant, ...others }) => {
   );
 };
 
-function ExperienceCard() {
-  const styles = useStyles();
+const ExperienceCard = () =>  {
+  const styles = useExperience();
   return (
     <MediaCard
       className={styles.root}
@@ -117,7 +49,7 @@ function ExperienceCard() {
       image={flexi}>
       <Typography variant='h1'>FlexiSAF Edusoft Limited</Typography>
       <Typography variant='caption'>Software Developer / Intren</Typography>
-      <Typography variant='body1'>{text}</Typography>
+      <Typography variant='body1'>{intrenText}</Typography>
       <Typography variant='caption' color='primary'>
         May 2020 - Present
       </Typography>
@@ -126,7 +58,7 @@ function ExperienceCard() {
 }
 
 export default function Experience(props) {
-  const styles = useStyles();
+  const styles = useExperience();
   return (
     <React.Fragment>
       <Grid item xs={12}>
@@ -151,9 +83,9 @@ export default function Experience(props) {
           Tools & Technologies
         </Typography>
         <List className={styles.skills}>
-          <OrderedList tools={languages} label='LANGUAGES' variant='h2' />
-          <OrderedList tools={frameworks} label='FRAMEWORKS' variant='h2' />
-          <OrderedList tools={tools} label='TOOLS' variant='h2' />
+          <Tools tools={languages} label='LANGUAGES' variant='h2' />
+          <Tools tools={frameworks} label='FRAMEWORKS' variant='h2' />
+          <Tools tools={tools} label='TOOLS' variant='h2' />
         </List>
       </Grid>
       <Grid item xs={12} sm={6} className={styles.workflow}>

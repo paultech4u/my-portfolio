@@ -1,71 +1,18 @@
 import React from "react";
-import MediaCard from "../components/dataCard";
+import MediaCard from "../components/card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Grid,
-  makeStyles,
   Typography,
   List,
   ListItem,
   ListItemIcon,
 } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    margin: theme.spacing(1),
-    width: theme.spacing(35),
-    height: theme.spacing(35),
-    borderRadius: "20px",
-    [theme.breakpoints.up("lg")]: {
-      margin: theme.spacing(1),
-      width: theme.spacing(42),
-      height: theme.spacing(40),
-      borderRadius: "20px",
-    },
-  },
-  header: {
-    marginTop: "10px",
-    marginBottom: "10px",
-    paddingLeft: theme.spacing(2),
-  },
-  edu_list: {
-    display: "flex",
-    flexDirection: "row",
-    overflowX: "scroll",
-    width: "100%",
-    msOverflowStyle: "none",
-    paddingBottom: theme.spacing(10),
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
-    [theme.breakpoints.up("lg")]: {
-      display: "flex",
-      flexDirection: "row",
-      overflowX: "scroll",
-      width: "100%",
-      msOverflowStyle: "none",
-      paddingBottom: theme.spacing(10),
-    },
-    "&::-webkit-scrollbar": {
-      display: "none",
-    },
-  },
-  sch_name: {
-    paddingBottom: "20px",
-  },
-  date: {
-    color: "orange",
-  },
-  media: {
-    height: 100,
-    backgroundColor: "orange",
-    [theme.breakpoints.up("lg")]: {
-      height: 140,
-    },
-  },
-}));
+import { useEducation } from "../styles/index";
 
 const SchoolCard = () => {
-  const styles = useStyles();
+  const styles = useEducation();
   return (
     <Grid item sm={12}>
       <MediaCard
@@ -74,7 +21,7 @@ const SchoolCard = () => {
         className={styles.root}
         classes={styles.media}
         text='visit'
-        link="http://buk.edu.ng/"
+        link='http://buk.edu.ng/'
         src='./'>
         <Typography variant='h2'>BAYERO UNIVERSITY KANO, NIGERIA</Typography>
         <Typography variant='caption' className={styles.sch_name}>
@@ -90,7 +37,7 @@ const SchoolCard = () => {
 };
 
 export default function Education(props) {
-  const styles = useStyles();
+  const styles = useEducation();
   return (
     <React.Fragment>
       <Grid item xs={12} sm={6}>
