@@ -1,0 +1,153 @@
+[33mcommit 3075e3ff53d4647b26c1c63c4b72d71170b8bdc2[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Thu Apr 9 21:19:24 2020 +0100
+
+    fix bugs
+
+[33mcommit 348bf44531fae339c0e945b207c94a25732305e9[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Tue Apr 7 16:34:06 2020 +0100
+
+    fix bug
+
+[33mcommit 73ec6954ee01a9abe4abe03b4ee80a0b5e516b15[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Tue Apr 7 16:29:28 2020 +0100
+
+    commit
+
+[33mcommit a47be9f590bcadfee9ff3038526d68f68e983e0d[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Tue Apr 7 16:00:26 2020 +0100
+
+    change title
+
+[33mcommit a283cf441b1838b56cb6459b79b8c17fecf8e8c6[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Tue Apr 7 15:24:36 2020 +0100
+
+    fixes bugs
+
+[33mcommit 11e4a92fb4a465c4b385105681be1580ff74425e[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Sun Apr 5 15:07:35 2020 +0100
+
+    fixed bugs
+
+[33mcommit 4e93d83e2fcdf0436287a8a2df44024092893a0e[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Sat Apr 4 19:39:58 2020 +0100
+
+    fix some bugs
+
+[33mcommit b9cec3b7ae40e8d3ccabc6ab12cffd0fceba4ee1[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Thu Apr 2 16:01:05 2020 +0100
+
+    fixed bugs for reponsiveness on mobile
+
+[33mcommit cf6928c980ea3b44271d21ccde06d019ebaa6995[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Thu Apr 2 15:59:56 2020 +0100
+
+    added a google font api
+
+[33mcommit 1df971c07c187bab7c3a14dd762c6f49dc51d351[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Thu Apr 2 15:59:27 2020 +0100
+
+    enhance the rating icon
+
+[33mcommit dab714cf486af45d84051ba79021916508898b7e[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Thu Apr 2 15:58:34 2020 +0100
+
+    remove the elevation #14
+
+[33mcommit 6b3b67b3d578f09cecf177f713f4645a0c60f887[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Thu Apr 2 15:57:23 2020 +0100
+
+    added a new google fontFamiliy #12 of my theme
+
+[33mcommit 9f2fff255109358974d49df51ae4127949f525da[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Wed Apr 1 16:27:44 2020 +0100
+
+    fix bugs on the modeswitcher and enchance the rating popup to be consistent
+
+[33mcommit 336615eb81783cb3df6390f91b88cd3476f4f17e[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Tue Mar 31 19:06:12 2020 +0100
+
+    Fixed: dark mode and adding localstorage for users  preferences
+
+[33mcommit c1321273307b4149fc18827efd17d5915bb4937c[m
+Merge: 5960dfc 9bbd4a3
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Mon Mar 30 13:17:42 2020 +0100
+
+    Merge branch 'master' of https://github.com/speak2donsimon/Techemptys
+
+[33mcommit 5960dfcbe039dfc464a9957ac6615968bc1e54ed[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Mon Mar 30 13:16:55 2020 +0100
+
+    "Fixed bugs"
+
+[33mcommit 9ec764585836dda2590bbad0787df0e363986921[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Mon Mar 30 13:08:13 2020 +0100
+
+    Fixed: Enhance the mode switcher to an IOS style
+
+[33mcommit 9bbd4a34c6f28e4ac30bd147dbe57aa54cbb9bf5[m
+Merge: cbeb1af 2ef1b93
+Author: Techemptys <speak2donsimon@gmail.com>
+Date:   Thu Mar 26 13:18:44 2020 +0100
+
+    Merge pull request #1 from speak2donsimon/dependabot/npm_and_yarn/acorn-5.7.4
+    
+    build(deps): bump acorn from 5.7.3 to 5.7.4
+
+[33mcommit cbeb1afce63ae958abea1202c343ea393cc7d8a7[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Wed Mar 25 11:10:16 2020 +0100
+
+    fixed bugs
+
+[33mcommit ef02761ea666bca32ea27c89ca91e6b81ab17779[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Wed Mar 25 11:08:58 2020 +0100
+
+    fixed bugs on each component
+
+[33mcommit 2ef1b93761c20fb0f2fce1a7c53c39d2d7241709[m[33m ([m[1;31morigin/dependabot/npm_and_yarn/acorn-5.7.4[m[33m)[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Wed Mar 25 10:04:59 2020 +0000
+
+    build(deps): bump acorn from 5.7.3 to 5.7.4
+    
+    Bumps [acorn](https://github.com/acornjs/acorn) from 5.7.3 to 5.7.4.
+    - [Release notes](https://github.com/acornjs/acorn/releases)
+    - [Commits](https://github.com/acornjs/acorn/compare/5.7.3...5.7.4)
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+
+[33mcommit 7a58d7ed8605c582c9cc4e8c12ad579caabe1741[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Tue Mar 24 06:00:15 2020 +0100
+
+    portfolio initial commit
+
+[33mcommit e0cac821e51f3cb631feb5831c4abd65b247c181[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Mon Feb 24 21:13:01 2020 +0100
+
+    created: portfolio initial commit
+
+[33mcommit 6fd91068d1af8abe70f6ec06e70c59e2a6198ebf[m
+Author: donsimon <speak2donsimon@gmail.com>
+Date:   Mon Feb 17 16:20:01 2020 +0100
+
+    Initialize project using Create React App
